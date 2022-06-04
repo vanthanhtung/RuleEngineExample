@@ -14,11 +14,11 @@ public class DroolsSpringConfiguration {
 
     private final KieServices kieServices = KieServices.Factory.get();
 
-
     @Bean
     public KieContainer getKieContainer() {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
-        kieFileSystem.write(ResourceFactory.newClassPathResource("discount.drl"));
+        kieFileSystem.write(ResourceFactory.newClassPathResource("electric.xls"));
+//        kieFileSystem.write(ResourceFactory.newClassPathResource("electric.drl"));
         KieBuilder kb = kieServices.newKieBuilder(kieFileSystem);
         kb.buildAll();
         KieModule kieModule = kb.getKieModule();

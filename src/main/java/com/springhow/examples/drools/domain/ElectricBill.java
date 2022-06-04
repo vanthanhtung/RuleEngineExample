@@ -37,4 +37,8 @@ public class ElectricBill {
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
+
+    public void calculateTotalPrice(Double unit) {
+        this.totalPrice = this.totalNumber * unit;
+    }
 }
