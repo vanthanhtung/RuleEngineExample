@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DecisionController {
 
-
     private final KieContainer kieContainer;
 
     public DecisionController(KieContainer kieContainer) {
