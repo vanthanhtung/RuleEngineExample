@@ -1,0 +1,57 @@
+import  com.springhow.examples.drools.domain.ElectricBill;
+
+rule "Calculate Electric Bill area 1a"
+    when
+        orderObject : ElectricBill( area=="1" && totalNumber < 200 );
+    then
+        orderObject.setTotalPrice(Double.valueOf(orderObject.getTotalNumber()));
+end;
+
+rule "Calculate Electric Bill area 1b"
+    when
+        orderObject : ElectricBill( area=="1" && totalNumber < 500 && totalNumber > 200);
+    then
+        orderObject.setTotalPrice(Double.valueOf(orderObject.getTotalNumber() * 1.5));
+end;
+
+rule "Calculate Electric Bill area 1c"
+    when
+        orderObject : ElectricBill( area=="1" && totalNumber > 500 );
+    then
+        orderObject.setTotalPrice(Double.valueOf(orderObject.getTotalNumber() * 2));
+end;
+
+rule "Calculate Electric Bill area 2a"
+    when
+        orderObject : ElectricBill( area=="2" && totalNumber < 200);
+    then
+        orderObject.setTotalPrice(Double.valueOf(orderObject.getTotalNumber() * 0.8));
+end;
+
+rule "Calculate Electric Bill area 2b"
+    when
+        orderObject : ElectricBill( area=="2" && totalNumber > 200 && totalNumber < 1000);
+    then
+        orderObject.setTotalPrice(Double.valueOf(orderObject.getTotalNumber() * 1.2));
+end;
+
+rule "Calculate Electric Bill area 2c"
+    when
+        orderObject : ElectricBill( area=="2" && totalNumber > 1000);
+    then
+        orderObject.setTotalPrice(Double.valueOf(orderObject.getTotalNumber() * 1.5));
+end;
+
+rule "Calculate Electric Bill area 3a"
+    when
+        orderObject : ElectricBill( area=="3" && totalNumber < 1000);
+    then
+        orderObject.setTotalPrice(Double.valueOf(orderObject.getTotalNumber()));
+end;
+
+rule "Calculate Electric Bill area 3b"
+    when
+        orderObject : ElectricBill( area=="3" && totalNumber > 1000);
+    then
+        orderObject.setTotalPrice(Double.valueOf(orderObject.getTotalNumber() * 1.3));
+end;
